@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AuthenticateTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testUnauthorizedWithoutAuthToken()
     {
         $response = $this->call('POST', '/api/teste');
@@ -59,6 +61,57 @@ class AuthenticateTest extends TestCase
         ])->seeJson([
             'attempt' => true
         ]);
+    }
+
+    public function testRegisterFail()
+    {
+        $fake = factory(\Dietando\Entities\User::class)->create();
+
+        $this->post('/api/auth/register', [])
+            ->seeJson(['status' => 'empty_fields']);
+
+        $this->post('/api/auth/register', [
+            'name' => 'teste',
+            'email' => 'teste',
+            'password' => 123,
+            'password_confirmation' => 321
+        ])->seeJson(['status' => 'passwords_do_not_match']);
+
+        $this->post('/api/auth/register', [
+            'name' => 'teste',
+            'email' => 'teste',
+            'password' => 123,
+            'password_confirmation' => 123
+        ])->seeJson(['status' => 'invalid_email']);
+
+        $this->post('/api/auth/register', [
+            'name' => 'teste',
+            'email' => $fake->email,
+            'password' => 123,
+            'password_confirmation' => 123
+        ])->seeJson(['status' => 'email_exists']);
+    }
+
+    public function testRegisterOk()
+    {
+        $password = '123456';
+        $user = factory(\Dietando\Entities\User::class)->make([
+            'password' => bcrypt($password)
+        ]);
+
+        $this->post('/api/auth/register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $password,
+            'password_confirmation' => $password
+        ])->seeJson([
+            'status' => 'ok'
+        ]);
+
+        $response = $this->decodeResponseJson();
+
+        $this->assertEquals($user->name, $response['user']['name']);
+        $this->assertEquals($user->email, $response['user']['email']);
     }
 
     public function testGetUser()
