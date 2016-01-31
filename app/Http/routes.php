@@ -39,5 +39,7 @@ Route::group(['prefix' => 'api'], function() {
                 'status' => 'ok'
             ];
         });
+
+        Route::resource('sync', 'Api\SyncController');
     });
 });

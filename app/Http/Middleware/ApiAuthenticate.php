@@ -20,7 +20,7 @@ class ApiAuthenticate
         if(!$request->has('auth_token')) {
             return response('Unauthorized.', 401);
         } else {
-            $auth = AuthToken::where('token', '=', $request->input('auth_token'))->first();
+            $auth = AuthToken::where('token', '=', $request->get('auth_token'))->first();
 
             if(!$auth) {
                 return response('Unauthorized', 401);
