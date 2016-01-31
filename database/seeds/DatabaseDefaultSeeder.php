@@ -64,7 +64,7 @@ class DatabaseDefaultSeeder extends Seeder
         //----------------------------------------------------
         // Almoço
         //----------------------------------------------------
-        Dietando\Entities\Meal::create([
+        $meal = Dietando\Entities\Meal::create([
             'accompaniment_id' => $accompaniment->id,
             'title' => 'Almoço',
             'time' => Carbon\Carbon::createFromTime(12, 0),
@@ -107,7 +107,7 @@ class DatabaseDefaultSeeder extends Seeder
         //----------------------------------------------------
         // Janta
         //----------------------------------------------------
-        Dietando\Entities\Meal::create([
+        $meal = Dietando\Entities\Meal::create([
             'accompaniment_id' => $accompaniment->id,
             'title' => 'Janta',
             'time' => Carbon\Carbon::createFromTime(19, 0),

@@ -98,7 +98,7 @@ class SyncTest extends TestCase
         //----------------------------------------------------
         // Almoço
         //----------------------------------------------------
-        Dietando\Entities\Meal::create([
+        $meal = Dietando\Entities\Meal::create([
             'accompaniment_id' => $accompaniment->id,
             'title' => 'Almoço',
             'time' => Carbon\Carbon::createFromTime(12, 0),
@@ -141,7 +141,7 @@ class SyncTest extends TestCase
         //----------------------------------------------------
         // Janta
         //----------------------------------------------------
-        Dietando\Entities\Meal::create([
+        $meal = Dietando\Entities\Meal::create([
             'accompaniment_id' => $accompaniment->id,
             'title' => 'Janta',
             'time' => Carbon\Carbon::createFromTime(19, 0),
