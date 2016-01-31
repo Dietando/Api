@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Dietando\Events;
 
 abstract class Event
 {

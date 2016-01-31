@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Dietando\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

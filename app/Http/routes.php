@@ -29,3 +29,15 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::group(['prefix' => 'api'], function() {
+    Route::controller('auth', 'Api\AuthController');
+
+    Route::group(['middleware' => 'auth.api'], function() {
+        Route::post('/teste', function() {
+            return [
+                'status' => 'ok'
+            ];
+        });
+    });
+});
