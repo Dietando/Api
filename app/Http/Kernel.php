@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \Dietando\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'auth.api' => ApiAuthenticate::class,
+        'api.auth' => ApiAuthenticate::class,
         'guest' => \Dietando\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
