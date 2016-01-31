@@ -278,7 +278,7 @@ class SyncTest extends TestCase
         foreach($itemsData as $item) {
             $itemsCheck[] = [
                 'id' => $item['id'],
-                'checked' => true,
+                'check' => true,
                 'checked_at' => \Carbon\Carbon::now()->toDateTimeString()
             ];
         }
@@ -303,7 +303,7 @@ class SyncTest extends TestCase
         $itemsData = $this->decodeResponseJson()[0]['items'];
 
         foreach($itemsData as $item) {
-            $this->assertTrue($item['checked']);
+            $this->assertTrue($item['check']);
         }
     }
 
@@ -376,7 +376,7 @@ class SyncTest extends TestCase
         foreach($mealsData as $meal) {
             $mealsCheck[] = [
                 'id' => $meal['id'],
-                'checked' => true,
+                'check' => true,
                 'checked_at' => \Carbon\Carbon::now()->toDateTimeString()
             ];
         }
@@ -401,7 +401,7 @@ class SyncTest extends TestCase
         $mealsData = $this->decodeResponseJson();
 
         foreach($mealsData as $meal) {
-            $this->assertTrue($meal['checked']);
+            $this->assertTrue($meal['check']);
         }
     }
 
@@ -475,14 +475,14 @@ class SyncTest extends TestCase
         foreach($dataToCheck as $meal) {
             $mealsCheck[] = [
                 'id' => $meal['id'],
-                'checked' => true,
+                'check' => true,
                 'checked_at' => \Carbon\Carbon::now()->toDateTimeString()
             ];
 
             foreach($meal['items'] as $item) {
                 $itemsCheck[] = [
                     'id' => $item['id'],
-                    'checked' => true,
+                    'check' => true,
                     'checked_at' => \Carbon\Carbon::now()->toDateString()
                 ];
             }
@@ -508,10 +508,10 @@ class SyncTest extends TestCase
         $mealsData = $this->decodeResponseJson();
 
         foreach($mealsData as $meal) {
-            $this->assertTrue($meal['checked']);
+            $this->assertTrue($meal['check']);
 
             foreach($meal['items'] as $item) {
-                $this->assertTrue($item['checked']);
+                $this->assertTrue($item['check']);
             }
         }
     }

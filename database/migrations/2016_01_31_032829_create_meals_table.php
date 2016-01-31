@@ -19,7 +19,7 @@ class CreateMealsTable extends Migration
             $table->dateTime('time');
             $table->dateTime('begin_date');
             $table->dateTime('end_date');
-            $table->boolean('checked')->default(false);
+            $table->boolean('check')->default(false);
             $table->dateTime('checked_at')->nullable();
             $table->timestamps();
 

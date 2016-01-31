@@ -24,7 +24,7 @@ class Meal extends Model
         'time',
         'begin_date',
         'end_date',
-        'checked',
+        'check',
         'checked_at'
     ];
 

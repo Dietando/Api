@@ -13,7 +13,7 @@ class Item extends Model
         'item',
         'quantity',
         'unity',
-        'checked',
+        'check',
         'checked_at'
     ];
 

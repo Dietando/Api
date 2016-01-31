@@ -58,8 +58,8 @@ class SyncController extends Controller
 
                     if($model) {
                         $model->fill([
-                            'checked' => $meal['checked'],
-                            'checked_at' => new Carbon($meal['checked_at'])
+                            'check' => $meal['check'],
+                            //'checked_at' => new Carbon($meal['checked_at'])
                         ])->save();
                     }
                 }
@@ -73,8 +73,8 @@ class SyncController extends Controller
 
                     if($model) {
                         $model->fill([
-                            'checked' => $item['checked'],
-                            'checked_at' => new Carbon($item['checked_at'])
+                            'check' => $item['check'],
+                            //'checked_at' => new Carbon($item['checked_at'])
                         ])->save();
                     }
                 }

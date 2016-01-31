@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('item');
             $table->float('quantity');
             $table->string('unity');
-            $table->boolean('checked')->default(false);
+            $table->boolean('check')->default(false);
             $table->dateTime('checked_at')->nullable();
             $table->timestamps();
         });
